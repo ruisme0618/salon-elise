@@ -741,12 +741,9 @@
   <script type="text/javascript">
     function openChatWithAfspraak() {
       if (window.voiceflow && window.voiceflow.chat) {
-        // Wis vorige sessie zodat chat herstart
-        Object.keys(localStorage).forEach(function(key) {
-          if (key.indexOf('voiceflow') !== -1 || key.indexOf('vf_') !== -1) {
-            localStorage.removeItem(key);
-          }
-        });
+        // Wis de Voiceflow sessie zodat chat herstart
+        localStorage.removeItem('voiceflow-session-6a2491ffb9e8da34f55cb964');
+        localStorage.removeItem('voiceflow-chat-widget:is-open');
         window.voiceflow.chat.open();
         setTimeout(function() {
           window.voiceflow.chat.interact({
@@ -759,7 +756,7 @@
               payload: { message: 'Ik wil graag een afspraak maken' }
             });
           }, 1500);
-        }, 600);
+        }, 800);
       }
     }
 
