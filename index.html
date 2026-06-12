@@ -742,14 +742,7 @@
     function openChatWithAfspraak() {
       if (window.voiceflow && window.voiceflow.chat) {
         localStorage.removeItem('voiceflow-session-6a2491ffb9e8da34f55cb964');
-        window._vfAfspraak = true;
         window.voiceflow.chat.open();
-        setTimeout(function() {
-          window.voiceflow.chat.interact({
-            type: 'launch',
-            payload: { afspraak: true }
-          });
-        }, 500);
       }
     }
 
