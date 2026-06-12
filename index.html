@@ -730,6 +730,18 @@
 
   <!-- VOICEFLOW CHATBOT -->
   <script type="text/javascript">
+    function openChatWithAfspraak() {
+      if (window.voiceflow && window.voiceflow.chat) {
+        window.voiceflow.chat.open();
+        setTimeout(function() {
+          window.voiceflow.chat.interact({
+            type: 'launch',
+            payload: { message: 'Ik wil graag een afspraak maken' }
+          });
+        }, 800);
+      }
+    }
+
     (function(d, t) {
       var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
       v.onload = function() {
