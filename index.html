@@ -545,8 +545,17 @@
       if (window.voiceflow && window.voiceflow.chat) {
         window.voiceflow.chat.open();
         setTimeout(function() {
-          window.voiceflow.chat.interact({ type: 'launch', payload: { message: 'Ik wil graag een afspraak maken' } });
-        }, 800);
+          window.voiceflow.chat.interact({
+            type: 'launch',
+            payload: {}
+          });
+          setTimeout(function() {
+            window.voiceflow.chat.interact({
+              type: 'text',
+              payload: { message: 'Ik wil graag een afspraak maken' }
+            });
+          }, 1000);
+        }, 500);
       }
     }
   </script>
