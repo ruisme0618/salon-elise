@@ -550,7 +550,7 @@
       <li><a href="#diensten">Diensten</a></li>
       <li><a href="#openingsuren">Uren</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="#contact" class="nav-cta">Afspraak</a></li>
+      <li><a href="#" onclick="openChatWithAfspraak();return false;" class="nav-cta">Afspraak</a></li>
     </ul>
   </nav>
 
@@ -567,7 +567,7 @@
         Kom langs voor een persoonlijke behandeling in een warme, rustige sfeer in het hart van Brussel.
       </p>
       <div class="hero-buttons">
-        <a href="#contact" class="btn-primary">Afspraak maken</a>
+        <a href="#" onclick="openChatWithAfspraak();return false;" class="btn-primary">Afspraak maken</a>
         <a href="#diensten" class="btn-secondary">Onze diensten</a>
       </div>
     </div>
@@ -713,7 +713,7 @@
     <div class="contact-right">
       <div class="contact-cta-box">
         <p>"Klaar voor een nieuwe look? Boek je afspraak eenvoudig online."</p>
-        <a href="#" class="btn-gold">Afspraak maken</a>
+        <a href="#" onclick="openChatWithAfspraak();return false;" class="btn-gold">Afspraak maken</a>
       </div>
     </div>
   </section>
@@ -729,8 +729,8 @@
   <div class="powered-by">✦ Receptify AI</div>
 
   <!-- VOICEFLOW CHATBOT -->
- <script type="text/javascript">
-  (function(d, t) {
+  <script type="text/javascript">
+    (function(d, t) {
       var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
       v.onload = function() {
         window.voiceflow.chat.load({
@@ -741,9 +741,11 @@
           }
         });
       }
-      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-  })(document, 'script');
-</script>
+      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+      v.type = "text/javascript";
+      s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+  </script>
 
 </body>
 </html>
