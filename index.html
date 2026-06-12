@@ -540,6 +540,16 @@
       footer { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
     }
   </style>
+  <script>
+    function openChatWithAfspraak() {
+      if (window.voiceflow && window.voiceflow.chat) {
+        window.voiceflow.chat.open();
+        setTimeout(function() {
+          window.voiceflow.chat.interact({ type: 'launch', payload: { message: 'Ik wil graag een afspraak maken' } });
+        }, 800);
+      }
+    }
+  </script>
 </head>
 <body>
 
