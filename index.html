@@ -543,19 +543,9 @@
   <script>
     function openChatWithAfspraak() {
       if (window.voiceflow && window.voiceflow.chat) {
+        // Sla het bericht op dat automatisch gestuurd moet worden
+        window._vfAutoMessage = 'Ik wil graag een afspraak maken';
         window.voiceflow.chat.open();
-        setTimeout(function() {
-          window.voiceflow.chat.interact({
-            type: 'launch',
-            payload: {}
-          });
-          setTimeout(function() {
-            window.voiceflow.chat.interact({
-              type: 'text',
-              payload: { message: 'Ik wil graag een afspraak maken' }
-            });
-          }, 1000);
-        }, 500);
       }
     }
   </script>
@@ -755,9 +745,15 @@
         setTimeout(function() {
           window.voiceflow.chat.interact({
             type: 'launch',
-            payload: { message: 'Ik wil graag een afspraak maken' }
+            payload: {}
           });
-        }, 800);
+          setTimeout(function() {
+            window.voiceflow.chat.interact({
+              type: 'text',
+              payload: { message: 'Ik wil graag een afspraak maken' }
+            });
+          }, 1500);
+        }, 600);
       }
     }
 
@@ -769,6 +765,9 @@
           url: 'https://general-runtime.voiceflow.com',
           voice: {
             url: "https://runtime-api.voiceflow.com"
+          },
+          assistant: {
+            persistence: 'memory'
           }
         });
       }
