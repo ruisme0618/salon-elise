@@ -527,17 +527,46 @@
     .hero-buttons { animation: fadeUp 0.8s ease 0.3s both; }
 
     /* RESPONSIVE */
+    /* HAMBURGER */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 0.3rem; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); transition: all 0.3s; }
+    .mob-overlay { display: none; position: fixed; inset: 0; background: rgba(26,21,16,0.6); z-index: 200; }
+    .mob-panel { position: fixed; top: 0; right: -100%; bottom: 0; width: 75vw; max-width: 280px; background: var(--cream); z-index: 201; padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; transition: right 0.3s; border-left: 1px solid rgba(201,168,76,0.2); }
+    .mob-panel.open { right: 0; }
+    .mob-panel-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--dark); letter-spacing: 0.15em; margin-bottom: 1.5rem; }
+    .mob-panel a { font-size: 0.85rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dark); text-decoration: none; padding: 0.9rem 0; border-bottom: 1px solid rgba(201,168,76,0.15); display: block; }
+    .mob-panel a:last-child { border: none; }
+    .mob-panel .mob-afspraak { margin-top: 1rem; background: var(--dark); color: var(--cream); padding: 0.9rem 1.5rem; text-align: center; font-size: 0.75rem; letter-spacing: 0.15em; cursor: pointer; border: none; width: 100%; font-family: 'Jost', sans-serif; }
+
     @media (max-width: 900px) {
-      nav { padding: 1.2rem 2rem; }
+      nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; }
-      .hero-right { min-height: 300px; }
-      .hero-left { padding: 4rem 2rem; }
-      .diensten, .openingsuren, .contact { padding: 4rem 2rem; }
-      .diensten-grid { grid-template-columns: 1fr; }
-      .openingsuren, .contact { grid-template-columns: 1fr; gap: 3rem; }
-      .strip { padding: 1rem 2rem; gap: 2rem; }
-      footer { padding: 1.5rem 2rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { min-height: 260px; order: -1; }
+      .hero-left { padding: 2.5rem 1.5rem 3rem; }
+      .hero-title { font-size: 3rem; }
+      .hero-btns { flex-direction: column; gap: 0.8rem; }
+      .btn-primary, .btn-outline { width: 100%; text-align: center; padding: 1rem 1.5rem; box-sizing: border-box; }
+      .badge { bottom: 1rem; right: 1rem; padding: 0.6rem 1rem; font-size: 0.65rem; }
+      .diensten { padding: 3rem 1.5rem; }
+      .diensten h2 { font-size: 2rem; }
+      .diensten-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .dienst-card { padding: 1.5rem; }
+      .strip { padding: 1rem 1.5rem; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+      .openingsuren { padding: 3rem 1.5rem; }
+      .openingsuren > div { grid-template-columns: 1fr !important; gap: 2rem; }
+      .contact { padding: 3rem 1.5rem; }
+      .contact > div { grid-template-columns: 1fr !important; gap: 2rem; }
+      .contact h2 { font-size: 2rem; }
+      .contact-info { gap: 1.2rem; }
+      .btn-gold { width: 100%; text-align: center; box-sizing: border-box; }
+      footer { padding: 1.2rem 1.5rem; flex-direction: column; gap: 0.4rem; text-align: center; font-size: 0.75rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 2.2rem; }
     }
   </style>
   <script>
@@ -766,5 +795,24 @@
     })(document, 'script');
   </script>
 
+<!-- MOBILE MENU -->
+<div class="mob-overlay" id="mob-overlay" onclick="sluitMobMenu()"></div>
+<div class="mob-panel" id="mob-panel">
+  <div class="mob-panel-logo">Salon Elise</div>
+  <a href="#diensten" onclick="sluitMobMenu()">Diensten</a>
+  <a href="#openingsuren" onclick="sluitMobMenu()">Uren</a>
+  <a href="#contact" onclick="sluitMobMenu()">Contact</a>
+  <button class="mob-afspraak" onclick="sluitMobMenu();openChatWithAfspraak();">Afspraak maken</button>
+</div>
+<script>
+  function openMobMenu() {
+    document.getElementById('mob-panel').classList.add('open');
+    document.getElementById('mob-overlay').style.display = 'block';
+  }
+  function sluitMobMenu() {
+    document.getElementById('mob-panel').classList.remove('open');
+    document.getElementById('mob-overlay').style.display = 'none';
+  }
+</script>
 </body>
 </html>
